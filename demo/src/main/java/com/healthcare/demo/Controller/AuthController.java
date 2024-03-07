@@ -17,20 +17,25 @@ import org.springframework.http.HttpStatus;
 @RestController
 public class AuthController {
 
+    private final UserService userService;
+
+    public AuthController(UserService userService) {
+        this.userService = userService;
+    }
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody Map<String, String> requestBody) {
         String email = requestBody.get("email");
         String rawPassword = requestBody.get("password");
 
-        // Retrieve encrypted password from the database based on email
-        String encryptedPassword = UserService.getEncryptedPasswordByEmail(email);
+        String encryptedPassword = userService.getEncryptedPasswordByEmail(email);
 
-        if (encryptedPassword != null && UserService.verifyPassword(rawPassword, encryptedPassword)) {
+        if (encryptedPassword != null && userService.verifyPassword(rawPassword, encryptedPassword)) {
             // Authentication successful
-            return ResponseEntity.ok().build();
+            return ResponseEntity.ok().body("Authentication successful");
         } else {
             // Authentication failed
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed!!");
         }
     }
 }
