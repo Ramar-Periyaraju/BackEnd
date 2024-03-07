@@ -11,18 +11,18 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class UserService {
 
     @Autowired
-    private static PasswordEncoder passwordEncoder; 
-    
-    @Autowired
-    private static UserRepo userRepo;
+    private PasswordEncoder passwordEncoder;
 
-    public User saveDetails(User user) { 
+    @Autowired
+    private UserRepo userRepo;
+
+    public User saveDetails(User user) {
         String encryptedPassword = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPassword);
         return userRepo.save(user);
     }
 
-    public static String getEncryptedPasswordByEmail(String email) {
+    public String getEncryptedPasswordByEmail(String email) {
         User user = userRepo.findByEmail(email);
         if (user != null) {
             return user.getPassword(); // Assuming the password is stored as a String in the database
@@ -30,7 +30,7 @@ public class UserService {
         return null;
     }
 
-    public static boolean verifyPassword(String rawPassword, String encryptedPassword) {
+    public boolean verifyPassword(String rawPassword, String encryptedPassword) {
         return passwordEncoder.matches(rawPassword, encryptedPassword);
     }
 }

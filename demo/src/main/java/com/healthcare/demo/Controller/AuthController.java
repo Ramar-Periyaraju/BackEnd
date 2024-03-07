@@ -16,7 +16,7 @@ import org.springframework.http.HttpStatus;
 
 @RestController
 public class AuthController {
-    
+
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@RequestBody Map<String, String> requestBody) {
         String email = requestBody.get("email");
