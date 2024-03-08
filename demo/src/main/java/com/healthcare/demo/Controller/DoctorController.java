@@ -1,5 +1,7 @@
 package com.healthcare.demo.Controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,7 +20,7 @@ public class DoctorController {
     @Autowired
     private DoctorService doctorService ;
 
- @CrossOrigin(origins = "*")
+    @CrossOrigin(origins = "http://localhost:4200")
 @PostMapping("/addDoctor")
 public Doctor postDoctorDetails(@RequestBody Doctor doctor) {
 
@@ -31,6 +33,12 @@ public String test(){
 
   return "success";
 }
+
+@CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping("/api/doctors")
+    public List<Doctor> getAllDoctors() {
+        return doctorService.getAllDoctors();
+    }
 
 }
 

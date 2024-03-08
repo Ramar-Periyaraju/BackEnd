@@ -20,8 +20,8 @@ public class UserController {
 @CrossOrigin(origins = "http://localhost:4200")
 @PostMapping("/addUser")
 public User postDetails(@RequestBody User user) {
-    
+
     return userService.saveDetails(user);
 }
-    
+
 }

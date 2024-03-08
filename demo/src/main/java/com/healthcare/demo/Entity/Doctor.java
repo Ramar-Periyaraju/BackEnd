@@ -1,6 +1,5 @@
 package com.healthcare.demo.Entity;
 
-import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -31,28 +30,17 @@ public class Doctor {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "firstname")
-    private String firstname;
-
-    @Column(name = "lastname")
-    private String lastname;
-
+    @Column(name = "fullname")
+    private String fullname;
 
     @Column(name = "emailaddress")
     private String emailaddress;
 
-    @Column(name = "mobilenumber")
-    private String mobilenumber;
-
-
-    @Column(name = "dateofbirth")
-    private LocalDate dateofbirth;
-
-    @Column(name = "specialization")
-    private LocalDate specialization;
+    @Column(name = "phonenumber")
+    private String phonenumber;
 
     @Column(name = "country")
-    private LocalDate country;
+    private String country;
 
-    
+
 }

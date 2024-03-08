@@ -41,5 +41,5 @@ public class User {
 
     @Column(name = "mobilenumber")
     private String mobilenumber;
-    
+
 }
