@@ -23,7 +23,7 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @PostMapping("/signin")
+    @PostMapping("/login")
     public ResponseEntity<?> authenticateUser(@RequestBody Map<String, String> requestBody) {
         String email = requestBody.get("email");
         String rawPassword = requestBody.get("password");
