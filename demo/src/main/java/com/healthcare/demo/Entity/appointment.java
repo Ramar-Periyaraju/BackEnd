@@ -1,10 +1,14 @@
 package com.healthcare.demo.Entity;
 
 
+import org.hibernate.annotations.GenericGenerator;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,11 +23,11 @@ import lombok.NoArgsConstructor;
 
 public class appointment {
 
-
-  @Id
-  @Column(name = "ID")
-  @GeneratedValue
-  private int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "custom-id")
+    @GenericGenerator(name = "custom-id", strategy = "com.healthcare.demo.util.CustomIdGenerator")
+    @Column(name = "ID")
+    private String id;
 
   @Column(name = "name")
     private String name;
@@ -62,5 +66,12 @@ public class appointment {
     @Column(name = "IssueDesc")
     private String IssueDesc;
 
+    public String getId() {
+      return id;
+  }
+
+  public void setId(String id) {
+      this.id = id;
+  }
 
 }
