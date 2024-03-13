@@ -6,7 +6,7 @@ import com.healthcare.demo.Entity.User;
 
 public interface UserRepo extends JpaRepository<User, Integer> {
     User findByEmail(String email);
-    User findByUsername(String username); 
+    User findByUsername(String username);
 
-    
-} 
+
+}

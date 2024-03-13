@@ -1,7 +1,8 @@
 package com.healthcare.demo.Repository;
 
-import com.healthcare.demo.Entity.UserInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.healthcare.demo.Entity.UserInfo;
 
 import java.util.Optional;
 

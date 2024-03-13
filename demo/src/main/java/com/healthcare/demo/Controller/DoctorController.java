@@ -3,6 +3,7 @@ package com.healthcare.demo.Controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,10 +23,10 @@ public class DoctorController {
 
     @CrossOrigin(origins = "http://localhost:4200")
 @PostMapping("/addDoctor")
-public Doctor postDoctorDetails(@RequestBody Doctor doctor) {
+    public ResponseEntity<Object> postDoctorDetails(@RequestBody Doctor doctor) {
+        return doctorService.saveDetails(doctor);
+    }
 
-    return doctorService.saveDetails(doctor);
-}
 
 @GetMapping("/test")
 

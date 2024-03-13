@@ -10,7 +10,6 @@ import com.healthcare.demo.Repository.UserInfoRepository;
 import java.util.Optional;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 public class SignInController {
@@ -18,7 +17,7 @@ public class SignInController {
     private final BCryptPasswordEncoder passwordEncoder;
     private final UserInfoRepository userRepository;
 
-    @Autowired
+
     public SignInController(BCryptPasswordEncoder passwordEncoder, UserInfoRepository userRepository) {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;

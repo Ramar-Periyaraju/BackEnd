@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.healthcare.demo.Entity.User;
 import com.healthcare.demo.Repository.UserRepo;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Service
